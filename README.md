@@ -10,7 +10,7 @@ See the available parsers to integrate with your own software:
 - [dart](https://github.com/TheMaverickProgrammer/dart_yes_parser)
 - [lua](https://github.com/TheMaverickProgrammer/lua_yes_parser)
 
-> Read the [full spec]([rust](https://github.com/TheMaverickProgrammer/rust_yes_parser)).
+> Read the [full spec](https://github.com/TheMaverickProgrammer/rust_yes_parser/tree/master/spec).
 
 ---
 
