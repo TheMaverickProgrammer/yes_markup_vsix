@@ -1,0 +1,50 @@
+{
+  "name": "yes-script",
+  "displayName": "YES Script",
+  "description": "Syntax highlighting for YES (Your Extensible Script) files",
+  "version": "1.0.0",
+  "publisher": "yes-script",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "yes",
+    "yes-script",
+    "extensible",
+    "scripting",
+    "config"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheMaverickProgrammer/yes_markup_vsix"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "yes-script",
+        "aliases": [
+          "YES Script",
+          "yes-script"
+        ],
+        "extensions": [
+          ".yes",
+          ".cart",
+          ".cts",
+          ".ani",
+          ".anim"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "yes-script",
+        "scopeName": "source.yes",
+        "path": "./syntaxes/yes.tmLanguage.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "YES Script",
+  "scopeName": "source.yes",
+  "fileTypes": ["yes"],
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#global-element" },
+    { "include": "#attribute-element" },
+    { "include": "#standard-element" }
+  ],
+  "repository": {
+
+    "comment": {
+      "name": "comment.line.number-sign.yes",
+      "match": "^\\s*#.*$"
+    },
+
+    "global-element": {
+      "comment": "! global — affects entire document",
+      "name": "meta.element.global.yes",
+      "begin": "^\\s*(!)(\\S+)",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.global.sigil.yes" },
+        "2": { "name": "entity.name.function.global.yes" }
+      },
+      "end": "$",
+      "patterns": [
+        { "include": "#line-continuation" },
+        { "include": "#keyvalue-list" }
+      ]
+    },
+
+    "attribute-element": {
+      "comment": "@ attribute — meta applied to the next standard element",
+      "name": "meta.element.attribute.yes",
+      "begin": "^\\s*(@)(\\S+)",
+      "beginCaptures": {
+        "1": { "name": "storage.modifier.attribute.sigil.yes" },
+        "2": { "name": "entity.name.tag.attribute.yes" }
+      },
+      "end": "$",
+      "patterns": [
+        { "include": "#line-continuation" },
+        { "include": "#keyvalue-list" }
+      ]
+    },
+
+    "standard-element": {
+      "comment": "Any line not starting with !, @, or # is a standard element",
+      "name": "meta.element.standard.yes",
+      "begin": "^\\s*([^!@#\\s][^\\s,=]*)",
+      "beginCaptures": {
+        "1": { "name": "entity.name.function.element.yes" }
+      },
+      "end": "$",
+      "patterns": [
+        { "include": "#line-continuation" },
+        { "include": "#keyvalue-list" }
+      ]
+    },
+
+    "keyvalue-list": {
+      "patterns": [
+        { "include": "#delimiter" },
+        { "include": "#named-keyvalue" },
+        { "include": "#value" }
+      ]
+    },
+
+    "delimiter": {
+      "name": "punctuation.separator.delimiter.yes",
+      "match": ","
+    },
+
+    "line-continuation": {
+      "name": "punctuation.separator.continuation.yes",
+      "match": "\\\\$"
+    },
+
+    "named-keyvalue": {
+      "comment": "key=value — key must not contain reserved chars or whitespace",
+      "match": "([^\\s,=!@#\"\\[\\]\\\\]+)\\s*(=)\\s*",
+      "captures": {
+        "1": { "name": "variable.other.key.yes" },
+        "2": { "name": "keyword.operator.assignment.yes" }
+      }
+    },
+
+    "value": {
+      "patterns": [
+        { "include": "#string-literal" },
+        { "include": "#custom-literal" },
+        { "include": "#boolean-value" },
+        { "include": "#numeric-value" },
+        { "include": "#raw-value" }
+      ]
+    },
+
+    "string-literal": {
+      "name": "string.quoted.double.yes",
+      "begin": "\"",
+      "end": "\"",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.string.begin.yes" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.string.end.yes" }
+      },
+      "patterns": [
+        {
+          "name": "constant.character.escape.yes",
+          "match": "\\\\[nrt\"\\\\]|\\\\$"
+        }
+      ]
+    },
+
+    "custom-literal": {
+      "comment": "User-defined literal span using square brackets",
+      "name": "string.other.literal.bracket.yes",
+      "begin": "\\[",
+      "end": "\\]",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.literal.begin.yes" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.literal.end.yes" }
+      }
+    },
+
+    "numeric-value": {
+      "comment": "Integers, decimals, with optional unit suffix: 5f, 1.0s, 128, 32px",
+      "name": "constant.numeric.yes",
+      "match": "-?\\d+(?:\\.\\d+)?[a-zA-Z]*"
+    },
+
+    "boolean-value": {
+      "name": "constant.language.boolean.yes",
+      "match": "\\b(true|false)\\b"
+    },
+
+    "raw-value": {
+      "comment": "Unquoted token — anything that isn't whitespace, delimiter, or reserved",
+      "name": "string.unquoted.yes",
+      "match": "[^\\s,=!@#\"\\[\\]\\\\]+"
+    }
+  }
+}
