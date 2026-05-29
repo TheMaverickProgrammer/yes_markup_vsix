@@ -3,7 +3,7 @@
   "displayName": "YES Script",
   "description": "Syntax highlighting for YES (Your Extensible Script) files",
   "version": "1.0.0",
-  "publisher": "yes-script",
+  "publisher": "ProtoComplete",
   "engines": {
     "vscode": "^1.74.0"
   },

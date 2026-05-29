@@ -1,5 +1,7 @@
 # YES Script — VS Code Markup Highlighter
+Download the [visual studio extension](https://marketplace.visualstudio.com/items?itemName=ProtoComplete.yes-script).
 
+## About
 Syntax highlighting for **YES** (**Y**our **E**xtensible **S**cript) files in Visual Studio Code.
 
 YES is a meta-scriptlet standard whose elements, keys, and evaluation are user-defined.
@@ -10,7 +12,7 @@ See the available parsers to integrate with your own software:
 - [dart](https://github.com/TheMaverickProgrammer/dart_yes_parser)
 - [lua](https://github.com/TheMaverickProgrammer/lua_yes_parser)
 
-> Read the [full spec](https://github.com/TheMaverickProgrammer/rust_yes_parser/tree/master/spec).
+> Read the [full spec](https://github.com/TheMaverickProgrammer/rust_yes_parser/tree/master/spec) to learn more.
 
 ---
 
